@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Explore device support for iPhone, iPad, Apple Watch, Mac, and Apple TV.">
+<title>Device Wiki</title>
+<link rel="icon" href="assets/apple.svg" type="image/svg+xml">
+<style>
+:root{
+  --bg:#ffffff; --text:#202122; --line:#a2a9b1; --box:#f8f9fa; --link:#3366cc; --brand:#006400;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#101418; --text:#eaecf0; --line:#54595d; --box:#161c22; --link:#7aa7ff; --brand:#6fd36f; color-scheme:dark;}
+  .apple-mark{filter:invert(1)}
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font:15px/1.4 system-ui,-apple-system,"Segoe UI","Noto Sans TC",sans-serif}
+header{display:flex;align-items:center;gap:12px;padding:16px 24px}
+header .apple-mark{width:36px;height:44px;object-fit:contain}
+header b{font-size:18px;color:var(--brand)}
+main{max-width:1000px;margin:0 auto;padding:16px 24px 48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.hero{display:flex;justify-content:center}
+.hero .apple-mark{width:min(100%,280px);height:auto}
+h1{margin:0 0 20px;font-size:20px;font-weight:500;color:var(--brand)}
+.group{margin:0 0 28px;display:grid;gap:8px}
+.group a{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--link);min-height:44px}
+.group .icon{display:block;flex:0 0 40px;width:40px;height:40px;object-fit:contain}
+.group svg.icon{padding:5px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.group span{flex:1;padding:7px 10px;background:var(--box);border:1px solid var(--line)}
+.group a:hover span,.group a:focus-visible span{border-color:var(--link)}
+a:focus-visible{outline:2px solid var(--link);outline-offset:4px}
+.symbols{position:absolute;width:0;height:0;overflow:hidden}
+footer{max-width:1000px;margin:auto;padding:0 24px 24px;color:var(--text);font-size:12px}
+footer a{color:var(--link)}
+@media (max-width:720px){main{grid-template-columns:1fr;gap:28px}.hero .apple-mark{width:150px}}
+</style>
+</head>
+<body>
+<svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <symbol id="devices" viewBox="0 0 24 24"><rect x="2" y="3" width="14" height="12" rx="1.5"/><path d="M6 20h6m-3-5v5"/><rect x="16" y="9" width="6" height="12" rx="1.5"/><path d="M18.5 18h1"/></symbol>
+  <symbol id="download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
+  <symbol id="code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-2 18"/></symbol>
+  <symbol id="book" viewBox="0 0 24 24"><path d="M12 5C8 2 4 3 2 4v15c3-1 6-1 10 2 4-3 7-3 10-2V4c-2-1-6-2-10 1Zm0 0v16"/></symbol>
+  <symbol id="chat" viewBox="0 0 24 24"><path d="M21 11a8 8 0 0 1-8 8H8l-5 3v-6a8 8 0 0 1-1-5 9.5 8 0 0 1 19 0Z"/><path d="M7 10h10m-10 4h6"/></symbol>
+  <symbol id="document" viewBox="0 0 24 24"><path d="M14 2H4v20h16V8Zm0 0v6h6M8 12h8m-8 4h8"/></symbol>
+  <symbol id="alert" viewBox="0 0 24 24"><path d="m12 3 10 18H2Zm0 5v6m0 3v.5"/></symbol>
+</svg>
+<header>
+  <img class="apple-mark" src="assets/apple.svg" width="36" height="44" alt="Apple">
+  <b>Device Wiki</b>
+</header>
+<main>
+  <div class="hero">
+    <img class="apple-mark" src="assets/apple.svg" width="280" height="340" alt="Apple logo">
+  </div>
+  <div>
+    <h1>The wiki for your devices and beyond…</h1>
+    <nav aria-label="Device categories" class="group">
+      <a href="devices.html"><svg class="icon" aria-hidden="true"><use href="#devices"/></svg><span>All Devices</span></a>
+      <a href="devices.html#iOS"><img class="icon" src="assets/iphone.png" width="40" height="40" alt=""><span>iOS</span></a>
+      <a href="devices.html#iPadOS"><img class="icon" src="assets/ipad.png" width="40" height="40" alt=""><span>iPadOS</span></a>
+      <a href="devices.html#watchOS"><img class="icon" src="assets/watch.png" width="40" height="40" alt=""><span>watchOS</span></a>
+      <a href="devices.html#macOS"><img class="icon" src="assets/mac.png" width="40" height="40" alt=""><span>macOS</span></a>
+      <a href="devices.html#tvOS"><img class="icon" src="assets/apple-tv.png" width="40" height="40" alt=""><span>tvOS</span></a>
+    </nav>
+    <nav aria-label="Guides" class="group">
+      <a href="#"><svg class="icon" aria-hidden="true"><use href="#download"/></svg><span>Installation</span></a>
+      <a href="#"><svg class="icon" aria-hidden="true"><use href="#code"/></svg><span>Porting</span></a>
+      <a href="#"><svg class="icon" aria-hidden="true"><use href="#book"/></svg><span><em>More Guides</em></span></a>
+    </nav>
+    <nav aria-label="Resources" class="group">
+      <a href="#"><svg class="icon" aria-hidden="true"><use href="#chat"/></svg><span>Community</span></a>
+      <a href="#"><svg class="icon" aria-hidden="true"><use href="#document"/></svg><span>Technical Reference</span></a>
+      <a href="#"><svg class="icon" aria-hidden="true"><use href="#alert"/></svg><span>Troubleshooting</span></a>
+    </nav>
+  </div>
+</main>
+<footer>Independent device wiki. Not affiliated with Apple Inc. Apple and its product images are the property of Apple Inc. <a href="assets/SOURCES.md">Image sources</a>.</footer>
+</body>
+</html>

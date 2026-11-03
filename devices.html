@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Device support table</title>
+<style>
+:root{
+  --bg:#ffffff; --text:#202122; --line:#a2a9b1; --head:#eaecf0; --alt:#f8f9fa;
+  --link:#3366cc; --y:#c6ffb4; --p:#fdc79a; --n:#ffffff; --dash:#dddddd;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#101418; --text:#eaecf0; --line:#54595d; --head:#202a33; --alt:#161c22;
+    --link:#7aa7ff; --y:#1f5a2c; --p:#7a4a1a; --n:#2a2f35; --dash:#3a4047;
+    color-scheme: dark;
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.4 system-ui,-apple-system,"Segoe UI","Noto Sans TC",sans-serif}
+.wrap{overflow-x:auto;padding:8px}
+table{border-collapse:collapse;width:100%;min-width:760px}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;white-space:nowrap}
+th{background:var(--head);cursor:pointer;user-select:none;font-weight:600;position:sticky;top:0}
+th:focus-visible{outline:2px solid var(--link);outline-offset:-2px}
+th::after{content:"\2195";float:right;margin-left:10px;opacity:.45;font-size:12px}
+th[aria-sort="ascending"]::after{content:"\25B2";opacity:1}
+th[aria-sort="descending"]::after{content:"\25BC";opacity:1}
+tbody tr:nth-child(even){background:var(--alt)}
+td.dev{color:var(--link)}
+td.s{text-align:center}
+td.Y{background:var(--y)} td.P{background:var(--p)} td.N{background:var(--n)} td.D{background:var(--dash)}
+#msg{padding:12px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.tabs button{font:inherit;color:var(--text);background:var(--head);border:1px solid var(--line);border-radius:6px;padding:5px 12px;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
+.tabs button:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="tabs" id="tabs"></div>
+<div id="msg">載入中…</div>
+<table id="t" hidden>
+<thead><tr id="h"></tr></thead>
+<tbody id="b"></tbody>
+</table>
+</div>
+<script>
+// 資料放在同一資料夾的 devices.csv，第一行是欄位名稱，之後一行一台裝置。
+var cols=[], rows=[];
+var h=document.getElementById("h"), b=document.getElementById("b");
+var msg=document.getElementById("msg"), tbl=document.getElementById("t");
+var state={i:-1,dir:1};
+var OS=["iOS","iPadOS","watchOS","macOS","tvOS"], cur="All";
+function osIdx(){return cols.indexOf("OS")}
+function show(r){return cur==="All"||r[osIdx()]===cur}
+function buildTabs(){
+  var el=document.getElementById("tabs"); el.innerHTML="";
+  if(osIdx()<0) return;
+  ["All"].concat(OS).forEach(function(name){
+    var n=rows.filter(function(r){return name==="All"||r[osIdx()]===name}).length;
+    var btn=document.createElement("button");
+    btn.textContent=name+" ("+n+")"; btn.setAttribute("aria-pressed",name===cur);
+    btn.onclick=function(){cur=name;history.replaceState(null,"","#"+name);buildTabs();render()};
+    el.appendChild(btn);
+  });
+}
+
+// 簡易 CSV 解析：支援雙引號包住含逗號的內容
+function parseCSV(text){
+  text=text.replace(/^\uFEFF/,"");
+  var out=[], row=[], f="", q=false;
+  for(var k=0;k<text.length;k++){
+    var c=text[k];
+    if(q){
+      if(c==='"'){ if(text[k+1]==='"'){f+='"';k++} else q=false }
+      else f+=c;
+    } else if(c==='"') q=true;
+    else if(c===","){ row.push(f.trim()); f=""; }
+    else if(c==="\n"||c==="\r"){
+      if(c==="\r"&&text[k+1]==="\n") k++;
+      row.push(f.trim()); f="";
+      if(row.some(function(x){return x!==""})) out.push(row);
+      row=[];
+    } else f+=c;
+  }
+  row.push(f.trim());
+  if(row.some(function(x){return x!==""})) out.push(row);
+  return out;
+}
+
+fetch("devices.csv",{cache:"no-store"})
+  .then(function(r){ if(!r.ok) throw new Error("HTTP "+r.status); return r.text(); })
+  .then(function(t){
+    var all=parseCSV(t);
+    cols=all[0];
+    rows=all.slice(1).map(function(r){
+      return cols.map(function(_,i){
+        var v=r[i]===undefined?"":r[i];
+        return /^\d+$/.test(v)?Number(v):v;
+      });
+    });
+    var m=location.hash.slice(1);
+    if(OS.indexOf(m)>-1) cur=m;
+    buildHead(); buildTabs(); render();
+    msg.hidden=true; tbl.hidden=false;
+  })
+  .catch(function(e){
+    msg.textContent="無法讀取 devices.csv（"+e.message+"）。請確認檔案存在，並且是透過網址開啟而不是直接雙擊 HTML 檔。";
+  });
+
+function buildHead(){
+  cols.forEach(function(c,i){
+    var th=document.createElement("th");
+    th.textContent=c; th.tabIndex=0; th.setAttribute("role","columnheader");
+    th.onclick=function(){sortBy(i)};
+    th.onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();sortBy(i)}};
+    h.appendChild(th);
+  });
+}
+function cls(v){return v==="-"?"D":v}
+function render(){
+  b.innerHTML="";
+  rows.filter(show).forEach(function(r){
+    var tr=document.createElement("tr");
+    r.forEach(function(v,i){
+      var td=document.createElement("td");
+      td.textContent=v;
+      if(i===0) td.className="dev";
+      else if(/^[YPN-]$/.test(v)) td.className="s "+cls(v);
+      tr.appendChild(td);
+    });
+    b.appendChild(tr);
+  });
+}
+function sortBy(i){
+  state.dir=(state.i===i)?-state.dir:1; state.i=i;
+  var num=typeof rows[0][i]==="number";
+  rows.sort(function(a,c){
+    var x=a[i], y=c[i];
+    return (num? x-y : String(x).localeCompare(String(y)))*state.dir;
+  });
+  Array.prototype.forEach.call(h.children,function(th,k){
+    if(k===i) th.setAttribute("aria-sort",state.dir===1?"ascending":"descending");
+    else th.removeAttribute("aria-sort");
+  });
+  render();
+}
+</script>
+</body>
+</html>
