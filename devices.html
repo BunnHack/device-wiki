@@ -29,6 +29,7 @@ th[aria-sort="ascending"]::after{content:"\25B2";opacity:1}
 th[aria-sort="descending"]::after{content:"\25BC";opacity:1}
 tbody tr:nth-child(even){background:var(--alt)}
 td.dev{color:var(--link)}
+td.dev a{color:inherit;text-decoration:none} td.dev a:hover{text-decoration:underline}
 td.s{text-align:center}
 td.Y{background:var(--y)} td.P{background:var(--p)} td.N{background:var(--n)} td.D{background:var(--dash)}
 #msg{padding:12px}
@@ -47,6 +48,7 @@ td.Y{background:var(--y)} td.P{background:var(--p)} td.N{background:var(--n)} td
 <tbody id="b"></tbody>
 </table>
 </div>
+<script src="assets/device-data.js"></script>
 <script>
 // 資料放在同一資料夾的 devices.csv，第一行是欄位名稱，之後一行一台裝置。
 var cols=[], rows=[];
@@ -68,28 +70,8 @@ function buildTabs(){
   });
 }
 
-// 簡易 CSV 解析：支援雙引號包住含逗號的內容
-function parseCSV(text){
-  text=text.replace(/^\uFEFF/,"");
-  var out=[], row=[], f="", q=false;
-  for(var k=0;k<text.length;k++){
-    var c=text[k];
-    if(q){
-      if(c==='"'){ if(text[k+1]==='"'){f+='"';k++} else q=false }
-      else f+=c;
-    } else if(c==='"') q=true;
-    else if(c===","){ row.push(f.trim()); f=""; }
-    else if(c==="\n"||c==="\r"){
-      if(c==="\r"&&text[k+1]==="\n") k++;
-      row.push(f.trim()); f="";
-      if(row.some(function(x){return x!==""})) out.push(row);
-      row=[];
-    } else f+=c;
-  }
-  row.push(f.trim());
-  if(row.some(function(x){return x!==""})) out.push(row);
-  return out;
-}
+// CSV parsing is shared with the individual device pages.
+var parseCSV=DeviceData.parseCSV;
 
 fetch("devices.csv",{cache:"no-store"})
   .then(function(r){ if(!r.ok) throw new Error("HTTP "+r.status); return r.text(); })
@@ -128,7 +110,12 @@ function render(){
     r.forEach(function(v,i){
       var td=document.createElement("td");
       td.textContent=v;
-      if(i===0) td.className="dev";
+      if(i===0){
+        td.className="dev";
+        var link=document.createElement("a");
+        link.href=DeviceData.deviceUrl(r[cols.indexOf("Codename")]);
+        link.textContent=v; td.textContent=""; td.appendChild(link);
+      }
       else if(/^[YPN-]$/.test(v)) td.className="s "+cls(v);
       tr.appendChild(td);
     });

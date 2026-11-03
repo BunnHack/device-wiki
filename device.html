@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Device hardware information, feature support, and installation documentation.">
+<title>Device — Device Wiki</title>
+<link rel="icon" href="assets/apple.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/device.css">
+<script src="assets/device-data.js" defer></script>
+<script src="assets/device.js" defer></script>
+</head>
+<body data-text="standard" data-width="standard">
+<a class="skip-link" href="#beginning">Skip to device information</a>
+<header class="site-header"><a href="index.html">Device Wiki</a><span aria-hidden="true">/</span><a href="devices.html">All devices</a></header>
+<div id="message" role="status">Loading device information…</div>
+<noscript><p class="notice">JavaScript is required to load device information from the CSV. <a href="devices.csv">Download the device data</a>.</p></noscript>
+<div class="layout" id="wiki" hidden>
+  <nav class="sidebar contents" aria-label="Contents">
+    <div class="sidebar-heading"><strong>Contents</strong><button type="button" aria-expanded="true" aria-controls="contents-list" data-toggle="contents-list">hide</button></div>
+    <ul id="contents-list">
+      <li><a href="#beginning">Beginning</a></li>
+      <li><a href="#maintainers">Maintainers</a></li>
+      <li><a href="#owners">Users owning this device</a></li>
+      <li><a href="#flash-mode">How to enter flash mode</a></li>
+      <li><a href="#installing">Installing</a></li>
+      <li><a href="#issues">Issues</a></li>
+      <li><a href="#see-also">See also</a></li>
+    </ul>
+  </nav>
+  <main class="wiki-page" id="beginning" tabindex="-1">
+    <h1 id="device-title"></h1>
+    <div class="page-tabs"><span class="selected">Page</span><div><span class="selected">Read</span><a href="devices.csv">View CSV source</a></div></div>
+    <p class="notice" id="sample-notice" hidden>This is a sample device entry, not verified hardware or support information.</p>
+    <div class="device-body">
+      <aside class="infoboxes" aria-label="Device specifications and support">
+        <section class="info-section" aria-labelledby="spec-title">
+          <h2 id="spec-title"></h2>
+          <table class="infobox"><caption class="sr-only">Device information</caption><tbody id="specs"></tbody></table>
+        </section>
+        <section class="info-section" aria-labelledby="features-title">
+          <h2 id="features-title">Features</h2>
+          <table class="infobox features"><caption class="sr-only">Feature support</caption><tbody id="features"></tbody></table>
+          <p class="legend">Y = Works · P = Partial · N = Broken<br>– = Untested / not recorded</p>
+        </section>
+      </aside>
+      <div class="sections">
+        <p id="device-summary"></p>
+        <p class="muted">Information is loaded from the device support CSV. Missing values are shown as not documented; hardware specifications do not imply software support.</p>
+        <section id="maintainers"><h2>Maintainers</h2><p>No maintainers have been documented for this device.</p></section>
+        <section id="owners"><h2>Users owning this device</h2><p>No device owners have been listed yet.</p></section>
+        <section id="flash-mode"><h2>How to enter flash mode</h2><p>Device-specific flash-mode instructions have not been documented. Do not use instructions intended for a different device.</p></section>
+        <section id="installing"><h2>Installing</h2><p>No verified installation guide is available for this device yet. Back up your data and confirm device compatibility before making changes.</p><p id="base-note" hidden></p></section>
+        <section id="issues"><h2>Issues</h2><ul id="issue-list"></ul><p class="muted">A missing status does not mean a feature works. The CSV does not include detailed issue reports.</p></section>
+        <section id="see-also"><h2>See also</h2><ul><li><a href="devices.html">All device support statuses</a></li><li><a href="devices.csv">Device data (CSV)</a></li><li id="os-related" hidden><a id="os-link">Devices running the same OS</a></li></ul></section>
+      </div>
+    </div>
+    <footer class="categories" id="categories" aria-label="Categories"></footer>
+  </main>
+  <aside class="sidebar appearance" aria-label="Appearance">
+    <div class="sidebar-heading"><strong>Appearance</strong><button type="button" aria-expanded="true" aria-controls="appearance-options" data-toggle="appearance-options">hide</button></div>
+    <div id="appearance-options">
+      <fieldset><legend>Text</legend>
+        <label><input type="radio" name="text-size" value="small"> Small</label>
+        <label><input type="radio" name="text-size" value="standard" checked> Standard</label>
+        <label><input type="radio" name="text-size" value="large"> Large</label>
+      </fieldset>
+      <fieldset><legend>Width</legend>
+        <label><input type="radio" name="page-width" value="standard" checked> Standard</label>
+        <label><input type="radio" name="page-width" value="wide"> Wide</label>
+      </fieldset>
+    </div>
+  </aside>
+</div>
+</body>
+</html>

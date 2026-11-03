@@ -1,30 +1,30 @@
-Device,OS,Codename,Architecture,Release year,USB Net,Flashing,Touch,Screen,Wifi,GPU,Battery,Camera,Sound,Light Control,Baseband,App
-Fairphone 4,,fairphone-fp4,aarch64,2021,Y,Y,Y,Y,P,-,-,-,-,-,-,-
-Google Pixel 3a,,google-sargo,aarch64,2019,Y,Y,Y,Y,P,-,-,-,-,-,-,-
-Google Pixel 3a XL,,google-bonito,aarch64,2019,Y,Y,Y,Y,P,-,-,-,-,-,-,-
-OnePlus 6,,oneplus-enchilada,aarch64,2018,Y,Y,Y,Y,P,-,-,-,-,-,-,-
-OnePlus 6T,,oneplus-fajita,aarch64,2018,Y,Y,Y,Y,Y,-,-,-,-,-,-,-
-PINE64 PinePhone,,pine64-pinephone,aarch64,2020,Y,-,Y,Y,Y,-,-,-,-,-,-,-
-PINE64 PinePhone Pro,,pine64-pinephonepro,aarch64,2021,Y,-,Y,Y,Y,-,-,-,-,-,-,-
-Purism Librem 5,,purism-librem5,aarch64,2020,Y,Y,Y,Y,Y,-,-,-,-,-,-,-
-Samsung Galaxy Core Prime VE LTE,,samsung-coreprimevelte,aarch64,2014,Y,Y,Y,P,P,-,-,-,-,-,-,-
-Samsung Galaxy S III,,samsung-m0,armv7,2012,P,Y,Y,Y,Y,-,-,-,-,-,-,-
-Samsung Galaxy S9,,samsung-starqltechn,aarch64,2018,Y,N,Y,Y,N,-,-,-,-,-,-,-
-SHIFT SHIFT6mq,,shift-axolotl,aarch64,2020,Y,Y,Y,Y,Y,-,-,-,-,-,-,-
-Xiaomi Mi 9T / Redmi K20,,xiaomi-davinci,aarch64,2019,Y,Y,Y,Y,Y,-,-,-,-,-,-,-
-Xiaomi Mi A1,,xiaomi-tissot,aarch64,2017,Y,Y,Y,Y,Y,-,-,-,-,-,-,-
-Xiaomi Mi A2 Lite,,xiaomi-daisy,aarch64,2018,Y,Y,Y,Y,Y,-,-,-,-,-,-,-
-Xiaomi Mi Note 10 / Mi CC9 Pro,,xiaomi-tucana,aarch64,2019,Y,Y,Y,Y,Y,-,-,-,-,-,-,-
-Xiaomi Mi Note 10 Lite,,xiaomi-toco,aarch64,2020,Y,Y,Y,Y,Y,-,-,-,-,-,-,-
-Xiaomi POCO X3 NFC,,xiaomi-surya,aarch64,2020,Y,Y,Y,Y,Y,-,-,-,-,-,-,-
-Xiaomi Pocophone F1 / POCO F1,,xiaomi-beryllium,aarch64,2018,Y,Y,Y,P,P,-,-,-,-,-,-,-
-Xiaomi Redmi 4 Prime,,xiaomi-markw,aarch64,2016,Y,Y,Y,Y,Y,-,-,-,-,-,-,-
-Xiaomi Redmi 5 Plus,,xiaomi-vince,aarch64,2017,Y,Y,Y,Y,Y,-,-,-,-,-,-,-
-Xiaomi Redmi Note 10 Pro,,xiaomi-sweet,aarch64,2021,Y,Y,Y,Y,Y,-,-,-,-,-,-,-
-Xiaomi Redmi Note 4 / 4X,,xiaomi-mido,aarch64,2017,Y,Y,Y,Y,Y,-,-,-,-,-,-,-
-Xiaomi Redmi S2 / Redmi Y2,,xiaomi-ysl,aarch64,2018,Y,Y,Y,Y,Y,-,-,-,-,-,-,-
-範例 iPhone,iOS,example-ios,arm64,2024,-,-,-,-,-,-,-,-,-,-,-,-
-範例 iPad,iPadOS,example-ipados,arm64,2024,-,-,-,-,-,-,-,-,-,-,-,-
-範例 Apple Watch,watchOS,example-watchos,arm64,2024,-,-,-,-,-,-,-,-,-,-,-,-
-範例 Mac,macOS,example-macos,arm64,2024,-,-,-,-,-,-,-,-,-,-,-,-
-範例 Apple TV,tvOS,example-tvos,arm64,2024,-,-,-,-,-,-,-,-,-,-,-,-
+Device,OS,Codename,Architecture,Release year,USB Net,Flashing,Touch,Screen,Wifi,GPU,Battery,Camera,Sound,Light Control,Baseband,App,Bluetooth,GPS,CPU,Storage,Based by
+Fairphone 4,,fairphone-fp4,aarch64,2021,Y,Y,Y,Y,P,-,-,-,-,-,-,-,-,-,-,-,-
+Google Pixel 3a,,google-sargo,aarch64,2019,Y,Y,Y,Y,P,-,-,-,-,-,-,-,-,-,-,-,-
+Google Pixel 3a XL,,google-bonito,aarch64,2019,Y,Y,Y,Y,P,-,-,-,-,-,-,-,-,-,-,-,-
+OnePlus 6,,oneplus-enchilada,aarch64,2018,Y,Y,Y,Y,P,-,-,-,-,-,-,-,-,-,-,-,-
+OnePlus 6T,,oneplus-fajita,aarch64,2018,Y,Y,Y,Y,Y,-,-,-,-,-,-,-,-,-,-,-,-
+PINE64 PinePhone,,pine64-pinephone,aarch64,2020,Y,-,Y,Y,Y,-,-,-,-,-,-,-,-,-,-,-,-
+PINE64 PinePhone Pro,,pine64-pinephonepro,aarch64,2021,Y,-,Y,Y,Y,-,-,-,-,-,-,-,-,-,-,-,-
+Purism Librem 5,,purism-librem5,aarch64,2020,Y,Y,Y,Y,Y,-,-,-,-,-,-,-,-,-,-,-,-
+Samsung Galaxy Core Prime VE LTE,,samsung-coreprimevelte,aarch64,2014,Y,Y,Y,P,P,-,-,-,-,-,-,-,-,-,-,-,-
+Samsung Galaxy S III,,samsung-m0,armv7,2012,P,Y,Y,Y,Y,-,-,-,-,-,-,-,-,-,-,-,-
+Samsung Galaxy S9,,samsung-starqltechn,aarch64,2018,Y,N,Y,Y,N,-,-,-,-,-,-,-,-,-,-,-,-
+SHIFT SHIFT6mq,,shift-axolotl,aarch64,2020,Y,Y,Y,Y,Y,-,-,-,-,-,-,-,-,-,-,-,-
+Xiaomi Mi 9T / Redmi K20,,xiaomi-davinci,aarch64,2019,Y,Y,Y,Y,Y,-,-,-,-,-,-,-,-,-,-,-,-
+Xiaomi Mi A1,,xiaomi-tissot,aarch64,2017,Y,Y,Y,Y,Y,-,-,-,-,-,-,-,-,-,-,-,-
+Xiaomi Mi A2 Lite,,xiaomi-daisy,aarch64,2018,Y,Y,Y,Y,Y,-,-,-,-,-,-,-,-,-,-,-,-
+Xiaomi Mi Note 10 / Mi CC9 Pro,,xiaomi-tucana,aarch64,2019,Y,Y,Y,Y,Y,-,-,-,-,-,-,-,-,-,-,-,-
+Xiaomi Mi Note 10 Lite,,xiaomi-toco,aarch64,2020,Y,Y,Y,Y,Y,-,-,-,-,-,-,-,-,-,-,-,-
+Xiaomi POCO X3 NFC,,xiaomi-surya,aarch64,2020,Y,Y,Y,Y,Y,-,-,-,-,-,-,-,-,-,-,-,-
+Xiaomi Pocophone F1 / POCO F1,,xiaomi-beryllium,aarch64,2018,Y,Y,Y,P,P,-,-,-,-,-,-,-,-,-,-,-,-
+Xiaomi Redmi 4 Prime,,xiaomi-markw,aarch64,2016,Y,Y,Y,Y,Y,-,-,-,-,-,-,-,-,-,-,-,-
+Xiaomi Redmi 5 Plus,,xiaomi-vince,aarch64,2017,Y,Y,Y,Y,Y,-,-,-,-,-,-,-,-,-,-,-,-
+Xiaomi Redmi Note 10 Pro,,xiaomi-sweet,aarch64,2021,Y,Y,Y,Y,Y,-,-,-,-,-,-,-,-,-,-,-,-
+Xiaomi Redmi Note 4 / 4X,,xiaomi-mido,aarch64,2017,Y,Y,Y,Y,Y,-,-,-,-,-,-,-,-,-,-,-,-
+Xiaomi Redmi S2 / Redmi Y2,,xiaomi-ysl,aarch64,2018,Y,Y,Y,Y,Y,-,-,-,-,-,-,-,-,-,-,-,-
+範例 iPhone,iOS,example-ios,arm64,2024,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+範例 iPad,iPadOS,example-ipados,arm64,2024,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+範例 Apple Watch,watchOS,example-watchos,arm64,2024,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+範例 Mac,macOS,example-macos,arm64,2024,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+範例 Apple TV,tvOS,example-tvos,arm64,2024,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
